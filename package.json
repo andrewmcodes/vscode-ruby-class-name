@@ -1,0 +1,125 @@
+{
+  "name": "ruby-class-name",
+  "displayName": "Ruby Class Name",
+  "description": "Copy Ruby class/module names from file paths with Rails-style conventions",
+  "version": "0.1.0",
+  "publisher": "andrewmcodes",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewmcodes/vscode-ruby-class-name"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewmcodes/vscode-ruby-class-name/issues"
+  },
+  "homepage": "https://github.com/andrewmcodes/vscode-ruby-class-name#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "ruby",
+    "rails",
+    "class",
+    "module",
+    "constant"
+  ],
+  "activationEvents": [
+    "onCommand:rubyClassName.copyForActiveFile"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "rubyClassName.copyForActiveFile",
+        "title": "Copy class name for active file",
+        "category": "Ruby"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "rubyClassName.copyForActiveFile",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c",
+        "when": "editorTextFocus && resourceLangId == ruby"
+      }
+    ],
+    "configuration": {
+      "title": "Ruby Class Name",
+      "properties": {
+        "rubyClassName.rootPrefixes": {
+          "type": "array",
+          "default": [
+            "app/models",
+            "app/controllers",
+            "app/jobs",
+            "app/services",
+            "app/mailers",
+            "app/workers",
+            "app/channels",
+            "app/serializers",
+            "app/forms",
+            "app/validators",
+            "lib"
+          ],
+          "description": "List of path prefixes to strip when inferring class names",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rubyClassName.useCodeInference": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable code-based inference using regex to find class/module definitions"
+        },
+        "rubyClassName.acronyms": {
+          "type": "object",
+          "default": {},
+          "description": "Map of snake_case fragments to preferred constant forms (e.g., {\"api\": \"API\", \"oauth\": \"OAuth\"})",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "rubyClassName.inferencePreference": {
+          "type": "string",
+          "enum": [
+            "path",
+            "code"
+          ],
+          "default": "path",
+          "description": "When both path and code inference are available, which to prefer"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js",
+    "test:unit": "mocha",
+    "lint": "eslint src --ext ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@andrewmcodes/commitlint-config": "^0.1.2",
+    "@andrewmcodes/prettier-config": "^2.0.0",
+    "@commitlint/cli": "^18.x",
+    "@types/mocha": "^10.x",
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "@vscode/test-electron": "^2.x",
+    "eslint": "^8.x",
+    "husky": "^8.x",
+    "mocha": "^10.x",
+    "ts-node": "^10.x",
+    "typescript": "^5.x"
+  },
+  "prettier": "@andrewmcodes/prettier-config"
+}

@@ -1,0 +1,13 @@
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+.mise.toml
+.eslintrc.json
+tsconfig.json
+node_modules/**
+*.vsix
+pnpm-lock.yaml
+.github/**
+TESTING.md
+commitlint.config.js

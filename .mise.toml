@@ -1,0 +1,53 @@
+[tools]
+node = "22.11.0"
+"npm:@vscode/vsce" = "latest"
+"npm:pnpm" = "latest"
+
+[tasks.install]
+description = "Install dependencies"
+run = "pnpm install"
+
+[tasks.compile]
+description = "Compile TypeScript to JavaScript"
+run = "pnpm run compile"
+depends = ["install"]
+
+[tasks.watch]
+description = "Watch and compile TypeScript on changes"
+run = "pnpm run watch"
+depends = ["install"]
+
+[tasks.lint]
+description = "Run ESLint on TypeScript files"
+run = "pnpm run lint"
+depends = ["install"]
+
+[tasks.format]
+description = "Format code with Prettier"
+run = "pnpm run format"
+depends = ["install"]
+
+[tasks."format:check"]
+description = "Check code formatting with Prettier"
+run = "pnpm run format:check"
+depends = ["install"]
+
+[tasks.test]
+description = "Run tests"
+run = "pnpm test"
+depends = ["compile"]
+
+[tasks."test:unit"]
+description = "Run unit tests"
+run = "pnpm run test:unit"
+depends = ["install"]
+
+[tasks.package]
+description = "Package the extension as .vsix"
+run = "pnpm exec vsce package"
+depends = ["compile"]
+
+[tasks.dev]
+description = "Compile and watch for changes during development"
+run = "pnpm run watch"
+depends = ["install"]
