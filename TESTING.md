@@ -55,12 +55,10 @@ pnpm run compile
 1. Open any Ruby file in your project (e.g., `app/controllers/users_controller.rb`)
 
 2. Use the keyboard shortcut:
-
    - **Mac**: `Cmd+Shift+C`
    - **Windows/Linux**: `Ctrl+Shift+C`
 
 3. Or use the command palette (`Cmd+Shift+P` / `Ctrl+Shift+P`):
-
    - Type: "Ruby: Copy class name for active file"
    - Press Enter
 
@@ -221,15 +219,12 @@ To change it:
 ### Edge Cases to Test
 
 1. **File without standard prefix**
-
    - `config/application.rb` → `Config::Application`
 
 2. **Multiple namespace levels**
-
    - `app/controllers/api/v2/admin/users_controller.rb` → `Api::V2::Admin::UsersController`
 
 3. **Non-Ruby file**
-
    - `app/controllers/users_controller.js` → Should show error
 
 4. **File not in workspace**
