@@ -122,5 +122,8 @@
     "ts-node": "^10.x",
     "typescript": "^5.x"
   },
-  "prettier": "@andrewmcodes/prettier-config"
+  "prettier": {
+    "printWidth": 120,
+    "endOfLine": "auto"
+  }
 }
